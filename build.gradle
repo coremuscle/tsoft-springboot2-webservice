@@ -10,7 +10,7 @@ buildscript {   // 이 프로젝트의 플러그인 의존성 관리를 위한 �
     }
 }
 
-// 자바와 스프링부트를 사용하기 위한 필수 플러그인4개111
+// 자바와 스프링부트를 사용하기 위한 필수 플러그인4개
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
@@ -25,9 +25,17 @@ repositories {  // 각종 의존성(라이브러리)들을 어떤 원격저장�
     mavenCentral()
 }
 
-dependencies {  // 프로젝트 개발에 필요한 의존성 선언
+dependencies {  // 프로젝트 개발에 필요한 의존성(라이브러리) 선언
     implementation('org.springframework.boot:spring-boot-starter-web')
     testImplementation('org.springframework.boot:spring-boot-starter-test')
+
+    // 롬복 사용을 위한 의존성 추가
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    // JPA 사용을 위한 의존성 추가
+    implementation('org.springframework.boot:spring-boot-starter-data-jpa') // 스프링 부트용 Spring Data Jpa 추상화 라이브러리
+    implementation('com.h2database:h2') // 인메모리 관계형 데이터베이스
 }
 
 /*
